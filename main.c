@@ -1,36 +1,48 @@
 //
 // Created by Jory Grzeszczak on 28/10/2024.
+// TP-0
 //
 
 #include <stdio.h>
 
-// Function to find the maximum value in an array
-int findMax(int arr[], int size) {
-    int max = arr[0];
-    for (int i = 1; i < size; i++) {
-        if (arr[i] > max) {
-            max = arr[i];
-        }
+int add(int,int); //signature ou prototype de fonction add
+int sum_elements_array(int arr[20], int n); // protorype de la fonction sum_elements_array
+
+// definition de la fonction main
+int main()
+{
+    int arr[20], size, result;
+    int a;
+    printf("Hello, World!\n");
+    a=add(2,3);
+    printf("%d\n",a);
+    scanf("%d",&size);
+    for (int i=0; i<size; i++) {
+        scanf("%d",&arr[i]);
     }
-    return max;
+    result=sum_elements_array(arr, size);
+    printf("La somme des éléments est : %d\n",result);
+    return 0;
 }
 
-int main() {
-    int n;
+// definition de la fonction add
+/* 
+* paramètres : a et b entiers
+* complexité temporelle : O(1)
+*/
+int add(int a, int b) {
+    return a+b;
+}
 
-    printf("Enter the number of elements in the array: ");
-    scanf("%d", &n);
-
-    int arr[n];
-
-    printf("Enter the elements of the array:\n");
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
+// definition de la fonction sum_elements_array
+/* 
+* paramètres : un tableau d'entiers de taille n
+* complexité temporelle : O(n)
+*/
+int sum_elements_array(int arr[20], int n) {
+    int i, sum=0;
+    for (i=0; i<n; i++) {
+        sum+=arr[i];
     }
-
-    int max = findMax(arr, n);
-
-    printf("The maximum value in the array is: %d\n", max);
-
-    return 0;
+    return sum;
 }
