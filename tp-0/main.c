@@ -173,11 +173,24 @@ int palindrome(char str[20]) {
 * complexité temporelle : O(n)
 */
 int substring(char str[20], char substring[20]) {
-    int i, j;
-    for (i=0, j=strlen(str)-1; i<j; i++, j--) {
-        if (str[i] != substring[j]) {
-            return 0;
+    char c = str[0];
+    int i=0, j;
+    int k;
+    while (c!='\0') {
+        j=0;
+        k=0;
+        while (c==substring[0] && substring[j]!='\0'&& str[k]!='\0'&& k!=-1) {
+            if (str[k]==substring[j]) {
+                k++;
+                j++;
+            };
         }
+        if (j==strlen(substring)) {
+            return i;
+        }
+        i++;
+        c = str[i];
     }
-    return 0;
+    return -1;  
+    
 }
